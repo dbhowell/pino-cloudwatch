@@ -1,0 +1,43 @@
+{
+  "name": "pino-cloudwatch",
+  "version": "0.1.0",
+  "description": "CloudWatch Logs transport for pino",
+  "main": "index.js",
+  "bin": {
+    "pino-cloudwatch": "bin/pino-cloudwatch.js"
+  },
+  "scripts": {
+    "test": "mocha",
+    "lint": "semistandard --verbose | snazzy"
+  },
+  "keywords": [
+    "pino",
+    "cloudwatch",
+    "logs",
+    "logger"
+  ],
+  "author": "David Howell (david@dynamicmethods.com.au)",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.5.0",
+    "aws-sdk": "^2.118.0",
+    "chunky-stream": "../chunky-stream/",
+    "lodash.map": "^4.6.0",
+    "pump": "^1.0.2",
+    "split2": "^2.1.1",
+    "yargs": "^9.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3",
+    "pino": "^4.7.2",
+    "semistandard": "^11.0.0",
+    "snazzy": "^7.0.0"
+  },
+  "semistandard": {
+    "global": [
+      "describe",
+      "it"
+    ]
+  }
+}
