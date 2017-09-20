@@ -13,7 +13,6 @@ var argv = yargs
   .describe('interval', 'The maxmimum interval (in ms) before flushing the log queue.')
   .demand('group')
   .default('interval', 1000)
-  .wrap(140)
   .argv;
 
 pump(process.stdin, split(), require('../index')(argv));
