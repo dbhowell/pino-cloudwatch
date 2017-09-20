@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 var yargs = require('yargs');
+var pump = require('pump');
+var split = require('split2');
 
 var argv = yargs
   .usage('Sends pino logs to AWS CloudWatch Logs.\nUsage: node index.js | pino-cloudwatch [options]')
@@ -14,4 +16,4 @@ var argv = yargs
   .wrap(140)
   .argv;
 
-require('../index')(argv);
+pump(process.stdin, split(), require('../index')(argv));
