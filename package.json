@@ -1,6 +1,6 @@
 {
   "name": "pino-cloudwatch",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "CloudWatch Logs transport for pino",
   "main": "index.js",
   "bin": {
