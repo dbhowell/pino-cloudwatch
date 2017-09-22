@@ -11,9 +11,7 @@ module.exports = function (options) {
   chunk.use(require('./lib/max-length'));
   chunk.use(require('./lib/max-size'));
 
-  return pump(chunk, throttle, log, function (err) {
-    if (err) {
-      console.error(err);
-    }
-  });
+  chunk.pipe(throttle).pipe(log);
+
+  return chunk;
 };
