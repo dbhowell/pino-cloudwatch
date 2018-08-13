@@ -29,9 +29,10 @@ Options:
                            Path to AWS JSON config.
   --aws_creds_profile      Load credentials via shared ini file. 
                            Profile name found in ~/.aws/credentials
+                           AWS Region is required for this option
   --aws_access_key_id      AWS Access Key ID
   --aws_secret_access_key  AWS Secret Access Key
-  --aws_region             AWS Region                                 [required]
+  --aws_region             AWS Region                                 
   --group                  AWS CloudWatch log group name              [required]
   --prefix                 AWS CloudWatch log stream name prefix
   --interval               The maxmimum interval (in ms) before flushing the log
@@ -39,13 +40,13 @@ Options:
 
 Sample Usage Options
 - Load credentials via JSON document 
-`node index.js | pino-cloudwatch --aws_creds_json=./awsconfig.json --group=group`
+node index.js | pino-cloudwatch --aws_creds_json=./awsconfig.json --group=group
 
 - Load credentials via shared ini file (~/.aws/credentials) 
-`node index.js | pino-cloudwatch --aws_creds_profile=profile_name --aws_region=region --group=group`
+node index.js | pino-cloudwatch --aws_creds_profile=profile_name --aws_region=region --group=group
 
 - Load credentials defining id and access key
-`node index.js | pino-cloudwatch --aws_access_key_id=key_id --aws_secret_access_key=access_key --aws_region=region --group=group` 
+node index.js | pino-cloudwatch --aws_access_key_id=key_id --aws_secret_access_key=access_key --aws_region=region --group=group
 ```
 ## Options
 
