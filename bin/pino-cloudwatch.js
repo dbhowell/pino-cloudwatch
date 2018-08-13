@@ -8,6 +8,8 @@ var argv = yargs
   .describe('aws_access_key_id', 'AWS Access Key ID')
   .describe('aws_secret_access_key', 'AWS Secret Access Key')
   .describe('aws_region', 'AWS Region')
+  .describe('aws_creds_json', 'AWS credentials configured via a JSON document')
+  .describe('aws_creds_profile', 'AWS credentials configured via a ~/.aws/credentials')
   .describe('group', 'AWS CloudWatch log group name')
   .describe('prefix', 'AWS CloudWatch log stream name prefix')
   .describe('interval', 'The maxmimum interval (in ms) before flushing the log queue.')
