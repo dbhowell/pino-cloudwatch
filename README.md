@@ -30,6 +30,7 @@ Options:
   --aws_region             AWS Region
   --group                  AWS CloudWatch log group name              [required]
   --prefix                 AWS CloudWatch log stream name prefix
+  --stream                 AWS CloudWatch log stream name, overrides --prefix option.
   --interval               The maxmimum interval (in ms) before flushing the log
                            queue.                                [default: 1000]
 ```
