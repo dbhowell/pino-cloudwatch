@@ -10,6 +10,7 @@ var argv = yargs
   .describe('aws_region', 'AWS Region')
   .describe('group', 'AWS CloudWatch log group name')
   .describe('prefix', 'AWS CloudWatch log stream name prefix')
+  .describe('stream', 'AWS CloudWatch log stream name, overrides --prefix option')
   .describe('interval', 'The maxmimum interval (in ms) before flushing the log queue.')
   .demand('group')
   .default('interval', 1000)
