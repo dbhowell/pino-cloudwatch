@@ -12,8 +12,10 @@ var argv = yargs
   .describe('prefix', 'AWS CloudWatch log stream name prefix')
   .describe('stream', 'AWS CloudWatch log stream name, overrides --prefix option')
   .describe('interval', 'The maxmimum interval (in ms) before flushing the log queue.')
+  .describe('stdout', 'Copy stdin to stdout')
   .demand('group')
   .default('interval', 1000)
+  .default('stdout', false)
   .argv;
 
 module.exports = pump(process.stdin, split(), require('../index')(argv));
