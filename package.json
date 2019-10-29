@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/dbhowell/pino-cloudwatch#readme",
   "dependencies": {
-    "async": "^2.5.0",
-    "aws-sdk": "^2.118.0",
+    "async": "^3.1.0",
+    "aws-sdk": "^2.558.0",
     "chunky-stream": "^0.3.0",
     "lodash.map": "^4.6.0",
     "pump": "^1.0.2",
@@ -34,11 +34,9 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "mocha": "^3.5.3",
+    "mocha": "^6.2.2",
     "mock-require": "^2.0.2",
-    "pino": "^4.7.2",
-    "semistandard": "^11.0.0",
-    "snazzy": "^7.0.0"
+    "pino": "^4.7.2"
   },
   "semistandard": {
     "global": [
