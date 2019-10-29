@@ -14,4 +14,14 @@ describe('pino-cloudwatch', function () {
       done(err);
     });
   });
+
+  it('should not send logs to CloudWatch Logs', function (done) {
+    var inStream = fs.createReadStream(path.resolve(__dirname, '../mocks/log_empty.txt'));
+    var pump = require('pump');
+    var split = require('split2');
+
+    pump(inStream, split(), index({ group: 'test' }), function (err) {
+      done(err);
+    });
+  });
 });
