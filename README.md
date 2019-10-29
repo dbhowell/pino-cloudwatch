@@ -4,7 +4,7 @@
 
 ## About
 
-`pino-cloudwatch` is a simple pino transport that buffers and holds pino logs until one of the following conditions are met:
+`pino-cloudwatch` is a simple [pino](https://getpino.io/#/) transport that buffers and holds [pino](https://getpino.io/#/) logs until one of the following conditions are met:
   * the number of logs reaches 10,000
   * the 'size' of the logs reaches 1,048,576 bytes OR
   * there is at least 1 log buffered and 1,000ms (default) has passed without another log item being buffered
