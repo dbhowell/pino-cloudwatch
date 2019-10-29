@@ -4,6 +4,9 @@ var CloudWatchStream = require('./lib/cloudwatch-stream');
 var ThrottleStream = require('./lib/throttle-stream');
 
 module.exports = function (options) {
+  options = options || {};
+  options.ignoreEmpty = true;
+
   var log = new CloudWatchStream(options);
   var chunk = new ChunkyStream(options);
   var throttle = new ThrottleStream();

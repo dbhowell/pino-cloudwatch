@@ -14,10 +14,8 @@ describe('pino-cloudwatch', function () {
       done(err);
     });
   });
-});
 
-describe('pino-cloudwatch', function () {
-  it('should send logs to CloudWatch Logs', function (done) {
+  it('should not send logs to CloudWatch Logs', function (done) {
     var inStream = fs.createReadStream(path.resolve(__dirname, '../mocks/log_empty.txt'));
     var pump = require('pump');
     var split = require('split2');
