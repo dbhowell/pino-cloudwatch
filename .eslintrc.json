@@ -1,0 +1,14 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "overrides": [
+    {
+      "files": ["**/*.spec.js"],
+      "env": {
+        "mocha": true
+      }
+    }
+  ]
+}
