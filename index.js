@@ -1,4 +1,3 @@
-var pump = require('pump');
 var ChunkyStream = require('chunky-stream');
 var StdoutStream = require('./lib/stdout-stream');
 var ThrottleStream = require('./lib/throttle-stream');

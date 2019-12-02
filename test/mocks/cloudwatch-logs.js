@@ -1,5 +1,5 @@
 
-function CloudWatchLogs (options) {
+function CloudWatchLogs (/*options*/) {
 
 }
 
