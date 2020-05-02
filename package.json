@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha test/specs/*",
-    "lint": "semistandard --verbose | snazzy"
+    "lint": "eslint ."
   },
   "keywords": [
     "pino",
@@ -26,6 +26,7 @@
     "async": "^3.1.0",
     "aws-sdk": "^2.558.0",
     "chunky-stream": "^0.3.0",
+    "eslint": "^6.7.2",
     "pump": "^1.0.2",
     "readable-stream": "^2.3.3",
     "split2": "^2.1.1",
@@ -36,11 +37,5 @@
     "mocha": "^6.2.2",
     "mock-require": "^2.0.2",
     "pino": "^4.7.2"
-  },
-  "semistandard": {
-    "global": [
-      "describe",
-      "it"
-    ]
   }
 }
