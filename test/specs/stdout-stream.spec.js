@@ -8,12 +8,12 @@ var pump = require('pump');
 var split = require('split2');
 var StdoutStream = require('../../lib/stdout-stream');
 
-describe('stdout-stream', function () {  
+describe('stdout-stream', function () {
   it('should copy input to stdout', function (done) {
     var didLog = false;
     var inStream = fs.createReadStream(path.resolve(__dirname, '../mocks/logs.txt'));
     var mockConsole = {
-      log: function (message) {
+      log: function (/*message*/) {
         didLog = true;
       }
     };
@@ -28,7 +28,7 @@ describe('stdout-stream', function () {
   it('should not copy input to stdout', function (done) {
     var didLog = false;
     var mockConsole = {
-      log: function (message) {
+      log: function (/*message*/) {
         didLog = true;
       }
     };
