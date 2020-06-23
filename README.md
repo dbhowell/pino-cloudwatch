@@ -69,6 +69,25 @@ var pump = require('pump');
 pump(process.stdin, split(), pinoCloudWatch({ group: 'test' }));
 ```
 
+Attach handlers to different writable stream events:
+
+```javascript
+var pinoCloudWatch = require('pino-cloudwatch');
+var streamToCloudWatch = pinoCloudWatch(
+    {
+        group: 'test'
+    },
+    {
+        unpipe: (...params) => {
+            // unpipe event triggered
+        },
+        error: (err) => {
+            // error event triggered
+        },
+    });
+```
+__note__: A full list of supported events can be found here https://nodejs.org/dist/v10.19.0/docs/api/stream.html#stream_writable_streams
+
 ### Arbitrary logs
 
 Technically `pino-cloudwatch` can send any object mode stream to CloudWatch Logs. This includes *any* text-based log file. For example: tailing a standard log file like nginx access.log.
