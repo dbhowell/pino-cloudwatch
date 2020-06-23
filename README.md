@@ -33,6 +33,8 @@ Options:
   --stream                 AWS CloudWatch log stream name, overrides --prefix option.
   --interval               The maxmimum interval (in ms) before flushing the log
                            queue.                                [default: 1000]
+  --write_complete_event   Emit an event with this name once the logs are successfully
+                           push / save in AWS CloudWatch Logs
 ```
 ## Options
 
@@ -49,6 +51,12 @@ If you set this to `0` then it will only send logs when:
   * It reaches the maximum size of the logs
 
 __note__: Disabling the interval could mean that logs will *never* be sent to CloudWatch Logs.
+
+### `write_complete_event`: `String`
+
+The `write_complete_event` is the event that will be emitted once the logs are successfully push / save in AWS CloudWatch Logs.
+
+__note__: register the `write_complete_event` event handler in the stream's events object parameter.
 
 ### `aws_access_key_id`: `String`
 
