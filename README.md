@@ -33,8 +33,6 @@ Options:
   --stream                 AWS CloudWatch log stream name, overrides --prefix option.
   --interval               The maxmimum interval (in ms) before flushing the log
                            queue.                                [default: 1000]
-  --write_complete_event   Emit an event with this name once the logs are successfully
-                           push / save in AWS CloudWatch Logs
 ```
 ## Options
 
@@ -51,12 +49,6 @@ If you set this to `0` then it will only send logs when:
   * It reaches the maximum size of the logs
 
 __note__: Disabling the interval could mean that logs will *never* be sent to CloudWatch Logs.
-
-### `write_complete_event`: `String`
-
-The `write_complete_event` is the event that will be emitted once the logs are successfully push / save in AWS CloudWatch Logs.
-
-__note__: register the `write_complete_event` event handler in the stream's events object parameter.
 
 ### `aws_access_key_id`: `String`
 
@@ -77,7 +69,11 @@ var pump = require('pump');
 pump(process.stdin, split(), pinoCloudWatch({ group: 'test' }));
 ```
 
-Attach handlers to different writable stream events:
+A `flushed` event is emitted once the logs are successfully pushed / saved in AWS CloudWatch Logs.
+
+__note__: add the `flushed` event handler in the stream's events object parameter if your application flow needs to be notified once the logs are successfully pushed
+
+Attach handlers to different stream events:
 
 ```javascript
 var pinoCloudWatch = require('pino-cloudwatch');
@@ -86,8 +82,8 @@ var streamToCloudWatch = pinoCloudWatch(
         group: 'test'
     },
     {
-        unpipe: (...params) => {
-            // unpipe event triggered
+        flushed: () => {
+            // flushed event triggered
         },
         error: (err) => {
             // error event triggered
