@@ -62,9 +62,29 @@ __note__: Disabling the interval could mean that logs will *never* be sent to Cl
 
 This module can be required and used as a writable stream:
 ```javascript
-var pinoCloudWatch = require('pino-cloudwatch');
-var split = require('split2');
 var pump = require('pump');
+var split = require('split2');
+var pinoCloudWatch = require('pino-cloudwatch');
+
+pump(process.stdin, split(), pinoCloudWatch({ group: 'test' }));
+
+```
+
+#### Writeable Stream Events
+
+Since pino-cloudwatch returns a writable stream, you can attach event handlers like any other writeable stream (see https://nodejs.org/dist/v10.19.0/docs/api/stream.html#stream_writable_streams).
+
+In addition, a `flushed` event is emitted once the logs are successfully pushed / saved in AWS CloudWatch Logs.
+
+```javascript
+var pump = require('pump');
+var split = require('split2');
+var pinoCloudWatch = require('pino-cloudwatch');
+var streamToCloudWatch = pinoCloudWatch({ group: 'test' });
+
+streamToCloudWatch.on('flushed', function () {
+  console.log('Logs were successfully sent to AWS CloudWatch');
+});
 
 pump(process.stdin, split(), pinoCloudWatch({ group: 'test' }));
 ```
