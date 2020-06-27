@@ -41,7 +41,7 @@ describe('cloudwatch-stream', function () {
 
   it('should emit a flushed event', function (done) {
     var stream = new CloudWatchStream({ group: 'test' });
-    var inStream = fs.createReadStream(path.resolve(__dirname, '../mocks/single_log.txt'));
+    var inStream = fs.createReadStream(path.resolve(__dirname, '../mocks/log_single.txt'));
 
     stream.on('flushed', function () {
       done();

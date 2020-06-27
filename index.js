@@ -19,6 +19,10 @@ module.exports = function (options, errorHandler) {
     log.on('error', errorHandler);
   }
 
+  log.on('flushed', function () {
+    stdout.emit('flushed')
+  });
+
   stdout.pipe(chunk).pipe(throttle).pipe(log);
 
   return stdout;
