@@ -29,4 +29,13 @@ describe('cloudwatch-stream', function () {
       done(err);
     });
   });
+
+  it('should recover from an InvalidSequenceTokenException', function (done) {
+    var stream = new CloudWatchStream({ group: 'test', aws_region: 'InvalidSequenceTokenException' });
+    var inStream = fs.createReadStream(path.resolve(__dirname, '../mocks/logs.txt'));
+
+    pump(inStream, split(), stream, function (err) {
+      done(err);
+    });
+  });
 });
