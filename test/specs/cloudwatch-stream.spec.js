@@ -38,4 +38,15 @@ describe('cloudwatch-stream', function () {
       done(err);
     });
   });
+
+  it('should emit a flushed event', function (done) {
+    var stream = new CloudWatchStream({ group: 'test' });
+    var inStream = fs.createReadStream(path.resolve(__dirname, '../mocks/single_log.txt'));
+
+    stream.on('flushed', function () {
+      done();
+    });
+  
+    pump(inStream, split(), stream);
+  });
 });
