@@ -24,4 +24,17 @@ describe('pino-cloudwatch', function () {
       done(err);
     });
   });
+
+  it('should emit a flushed event', function (done) {
+    var inStream = fs.createReadStream(path.resolve(__dirname, '../mocks/log_single.txt'));
+    var pump = require('pump');
+    var split = require('split2');
+    var pinoCloudwatch = index({ group: 'test' });
+
+    pinoCloudwatch.on('flushed', function () {
+      done();
+    });
+
+    pump(inStream, split(), pinoCloudwatch);
+  });
 });
