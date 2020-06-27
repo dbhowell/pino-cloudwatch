@@ -1,10 +1,25 @@
+const invalidSequenceTokenError = {
+  code: 'InvalidSequenceTokenException'
+};
 
-function CloudWatchLogs (/*options*/) {
+const invalidSequenceTokenRequest = {
+  httpResponse: {
+    body: '{"expectedSequenceToken": 1000}'
+  }
+};
 
+function CloudWatchLogs (options) {
+  this.mode = options.region;
 }
 
 CloudWatchLogs.prototype.putLogEvents = function (options, callback) {
-  callback();
+  if (this.mode === 'InvalidSequenceTokenException' && options.sequenceToken === 1) {
+    var cb = callback.bind(invalidSequenceTokenRequest);
+
+    return cb(invalidSequenceTokenError, null);
+  }
+
+  callback(null, { nextSequenceToken: options.sequenceToken++ });
 };
 
 CloudWatchLogs.prototype.createLogGroup = function (options, callback) {
