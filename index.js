@@ -6,6 +6,9 @@ var CloudWatchStream = require('./lib/cloudwatch-stream');
 module.exports = function (options, errorHandler) {
   options = options || {};
   options.ignoreEmpty = true;
+  options.interval = typeof options.interval === 'undefined'
+    ? 1000
+    : options.interval;
 
   var log = new CloudWatchStream(options);
   var chunk = new ChunkyStream(options);
