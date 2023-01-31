@@ -28,6 +28,7 @@ Options:
   --aws_access_key_id      AWS Access Key ID
   --aws_secret_access_key  AWS Secret Access Key
   --aws_region             AWS Region
+  --aws_endpoint           AWS Endpoint
   --group                  AWS CloudWatch log group name              [required]
   --prefix                 AWS CloudWatch log stream name prefix
   --stream                 AWS CloudWatch log stream name, overrides --prefix option.
@@ -55,6 +56,8 @@ __note__: Disabling the interval could mean that logs will *never* be sent to Cl
 ### `aws_secret_access_key`: `String`
 
 ### `aws_region`: `String`
+
+### `aws_endpoint`: `String`
 
 ## Other uses
 
